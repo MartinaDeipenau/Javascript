@@ -1,31 +1,33 @@
-class tarta {
-    constructor(producto, tamaño, precio) {
-        this.producto = producto
-        this.tamaño = tamaño
+class Tarta {
+    constructor(id, producto, precio, tamaño) {
+        this.id = id
+        this.producto= producto
         this.precio = precio
-    }
-    price() {
-        //debugger 
-        if (this.producto == "Lemon pie") {
-            let priceL = this.tamaño * mediano
-            return priceL
-        }
-        else if (this.producto == "Cheesecake") {
-            let priceCh = this.tamaño * grande
-            return priceCh
-        }
-        else {
-            let priceO = this.tamaño * chico
-            return priceO
-        }
+        this.tamaño = tamaño
     }
 }
-function carrito(){
-    let producto = prompt("Que desea comprar?: Lemon pie, Cheesecake o ambas")
-    producto = producto.toLocaleLowerCase()
-    let tamaño = parseInt(prompt("Ingrese el tamaño de la tarta, (chico,mediano,grande)"))
-    let precio = precio 
-    buy.push (new tarta(producto,tamaño,precio))
-    console.table(buy)
+
+const tartas = []
+
+function agregarTartas() {
+    tartas.push(new Tarta(1, "Lemon Pie", 900, "mediana"))
+    tartas.push(new Tarta(2, "Tarta Oreo", 950, "grande"))
+    tartas.push(new Tarta(3, "Cheesecake", 1050, "grande"))
 }
-carrito ()
+agregarTartas();
+
+function recorrerTartas() {
+    pizzas.forEach(element => {
+        console.table(element)
+    })
+}
+
+alert("Bienvenidos a Brikka")
+pedido = prompt("Que tarta vas a comprar? : \nLemon Pie, \nTarta Oreo, \nCheesecake")
+let buscar = tartas.filter(el => el.producto.includes(pedido))
+
+alert("A continuación le diremos cual es el precio a pagar por la Tarta")
+
+alert(`El precio a pagar es de: ${buscar[0].precio}`)
+
+alert("Gracias por tu compra")
