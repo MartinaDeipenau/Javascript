@@ -17,7 +17,7 @@ function agregarTartas() {
 agregarTartas();
 
 function recorrerTartas() {
-    pizzas.forEach(element => {
+    tartas.forEach(element => {
         console.table(element)
     })
 }
