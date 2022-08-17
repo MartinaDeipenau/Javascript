@@ -1,2 +1,0 @@
-const tartas = []
-carrito = []
