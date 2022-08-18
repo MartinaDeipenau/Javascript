@@ -1,10 +1,10 @@
 class Producto {
-    constructor(id, nombre, precio, tamaño, img) {
-        this.id = id
-        this.nombre = nombre
-        this.precio = precio
-        this.tamaño = tamaño
+    constructor( img, nombre, tamaño, precio, id) {
         this.img = img
+        this.nombre = nombre
+        this.tamaño = tamaño
+        this.precio = precio
+        this.id = id
     }
 }
 const productos = []
@@ -70,15 +70,35 @@ function agregarAlCarritoDom() {
     carrito.forEach(el => {
         let tr = document.createElement("tr")
         tr.className = "cards"
-        tr.innerHTML = `<td class="table-id">${el.id}</td>
-        <td><img class="table-img" src="${el.img}"/></td>
+        tr.innerHTML = `<td><img class="table-img" src="${el.img}"/></td>
         <td>${el.nombre}</td>
         <td>${el.tamaño}</td>
         <td>$${el.precio}</td>
+        <td class="table-id">${el.id}</td>
         `
         cuerpo.append(tr)
     })
+    eliminarProducto()
  }
+
+// eliminar del carrito
+
+function eliminarProducto() {
+    let eliminarbutton = document.querySelectorAll(".eliminar-button")
+    eliminarbutton.forEach(el=>{
+        el.addEventListener("click", (ev)=>{
+            let button = ev.target.parentElement.parentElement
+            let eliminarDom = button.querySelector(".table-id")
+            button.remove()
+            eliminar(eliminarDom.innerText)
+        })
+    })
+}
+function eliminar(id) {
+    carrito = carrito.filter(el=> el.id !== parseInt(id))
+    
+}
+
 
 
 
