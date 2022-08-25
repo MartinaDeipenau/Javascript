@@ -6,27 +6,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/estilos.css">  
 
 </head>
 
 <body>
+   <header class="header">
+   </header>
+   <main>
 
-    <h1>Bienvenidos a Brikka</h1>
-    <p>Aca encontraras variedad de Tartas y Alfajores.</p>
+    <div id="lista-productos" class="container">
+        <h1 class="encabezado">Brikka</h1>
+        <div class="products"></div>
+    </div>
+    </div>
 
 
 
-    <h2>Carrito</h2>
-    <section class="container"></section>
     <section class="carrito">
+        <h2 class="carrito-tittle">Carrito</h2>
+        <div class="contador-total">
+            <p>Total Carrito: $ <span class="total">0</span></p>
+        </div>
+
         <table>
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>IMAGEN</th>
-                    <th>DESCRIPCION</th>
-                    <th>TAMAÑO</th>
+                    <th>NOMBRE</th>
                     <th>PRECIO</th>
                 </tr>
             </thead>
@@ -35,6 +43,10 @@
             </tbody>
         </table>
     </section>
+   </main>
+   <footer class="footer">
+    <p>Copyright & -</p>
+   </footer>
 
 
     <script src="js/index.js"></script>

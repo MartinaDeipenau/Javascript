@@ -1,103 +1,108 @@
 class Producto {
-    constructor( img, nombre, tamaño, precio, id) {
+    constructor( id, img, nombre, precio) {
+        this.id = id
         this.img = img
         this.nombre = nombre
-        this.tamaño = tamaño
         this.precio = precio
-        this.id = id
+        
     }
 }
+
 const productos = []
 
-// listado de tartas
+let carrito = JSON.parse(localStorage.getItem("carritoLocal")) 
+let numeroCarrito = document.querySelector(".numero")
+let totalCarrito= document.querySelector(".total")
+
+
 
 function agregarProductos() {
-    productos.push(new Producto(1, "img","Lemon Pie", "mediana", 1000))
-    productos.push(new Producto(2, "img","Tarta oreo", "grande", 1350))
-    productos.push(new Producto(3, "img","Cheesecake", "mediana", 1050))
-    productos.push(new Producto(4, "img","Cheesecake de nutella", "grande", 1500))
-    productos.push(new Producto(5, "img","Brownie", "mediana", 1400))
+    productos.push(new Producto(1, `img/Lemonpie-min.jpg`,"Lemon Pie", 1500))
+    productos.push(new Producto(2, `img/Tortaoreo-min.jpg`,"Tarta oreo", 1350))
+    productos.push(new Producto(3, `img/Crumbledemanzana-min.jpg`,"Crumble de manzana", 1250))
+    productos.push(new Producto(4, `img/Brownie-min.jpg`,"Brownie", 1500))
 }
-agregarProductos()
-
-// agregar DOM
 
 function ProductosDom() {
-    let container = document.querySelector(".container")
+    let container = document.querySelector(".products")
     productos.forEach(el => {
         let div = document.createElement("div")
         div.className = "card"
         div.innerHTML = `<img class="img" src="${el.img}"/> 
         <p class="card-nombre">${el.nombre}</p>
-        <p class=""card-tamaño">${el.tamaño}</p>
         <p class="card-price">$${el.precio}</p>
-        <button id="${el.id}" class="card-button">Agregar al carrito</button>`
+        <button id="btn-agregar${el.id}" class="card-btn">Agregar al carrito</button>`
         container.append(div)
     })
-}
-ProductosDom()
+    comprar()
+    }
 
-let carrito = []
-
-// funcion comprar
 
 function comprar() {
-    let cardbutton = document.querySelectorAll(".card-button")
-    cardbutton.forEach(el => {
-        el.addEventListener("click", (ev) => {
-            let button = ev.target
-            let id = button.id
-            console.log(id)
-            agregarAlCarrito(id)
+    productos.forEach((prod) => {
+        document.querySelector(`#btn-agregar${prod.id}`).addEventListener("click", ()=>{
+            agregarAlCarrito(prod.id)
         })
     })
 }
 comprar()
 
-// agregar al carrito
-
 function agregarAlCarrito(IdParametro) {
-    const buscar = productos.find(el => el.id === parseInt(IdParametro))
+    const buscar = productos.find(el => el.id == IdParametro)
     carrito.push(buscar)
+    localStorage.setItem("carritoLocal", JSON.stringify(carrito))
+    calcularTotal()
     agregarAlCarritoDom()
 }
 
-// agregar dom al carrito 
 
 function agregarAlCarritoDom() {
     let cuerpo = document.querySelector(".cuerpo")
     cuerpo.innerHTML = ""
-    carrito.forEach(el => {
+    carrito.forEach(prod => {
         let tr = document.createElement("tr")
-        tr.className = "cards"
-        tr.innerHTML = `<td><img class="table-img" src="${el.img}"/></td>
-        <td>${el.nombre}</td>
-        <td>${el.tamaño}</td>
-        <td>$${el.precio}</td>
-        <td class="table-id">${el.id}</td>
+        tr.className = "cart"
+        tr.innerHTML = `<td class= "table-id">${prod.id}</td>
+        <td><img class="table-img" src="${prod.img}"/></td>
+        <td>${prod.nombre}</td>
+        <td>$${prod.precio}</td>
+        <td><button id="btn-eliminar-${prod.id}" class="eliminar-btn">X</button></td>
         `
         cuerpo.append(tr)
     })
-    eliminarProducto()
+    borrarProducto()
+    calcularTotal()
  }
 
-// eliminar del carrito
 
-function eliminarProducto() {
-    let eliminarbutton = document.querySelectorAll(".eliminar-button")
-    eliminarbutton.forEach(el=>{
+function borrarProducto() {
+    let eliminarBtn = document.querySelectorAll(".eliminar-btn")
+    eliminarBtn.forEach(el => {
         el.addEventListener("click", (ev)=>{
             let button = ev.target.parentElement.parentElement
             let eliminarDom = button.querySelector(".table-id")
-            button.remove()
             eliminar(eliminarDom.innerText)
+            calcularTotal()
+            agregarAlCarritoDom()
         })
     })
 }
-function eliminar(id) {
-    carrito = carrito.filter(el=> el.id !== parseInt(id))
-    
+
+function eliminar(param) {
+    let item = carrito.find(el=> el.id == param)
+    let index = carrito.indexOf(item)
+    carrito.splice(index, 1)
+    localStorage.setItem("carritoLocal", JSON.stringify(carrito))
 }
+
+function calcularTotal() {
+    let total = carrito.reduce((acc, prod) => acc + prod.precio, 0)
+    totalCarrito.innerHTML = total
+}
+
+agregarProductos()
+ProductosDom()
+agregarAlCarritoDom()
 
 
 
