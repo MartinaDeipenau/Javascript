@@ -1,4 +1,4 @@
-class Producto {
+class producto {
     constructor( id, img, nombre, precio) {
         this.id = id
         this.img = img
@@ -10,17 +10,17 @@ class Producto {
 
 const productos = []
 
-let carrito = JSON.parse(localStorage.getItem("carritoLocal")) 
+let carrito = JSON.parse(localStorage.getItem("carritoLocal")) || []
 let numeroCarrito = document.querySelector(".numero")
 let totalCarrito= document.querySelector(".total")
 
 
 
 function agregarProductos() {
-    productos.push(new Producto(1, `img/Lemonpie-min.jpg`,"Lemon Pie", 1500))
-    productos.push(new Producto(2, `img/Tortaoreo-min.jpg`,"Tarta oreo", 1350))
-    productos.push(new Producto(3, `img/Crumbledemanzana-min.jpg`,"Crumble de manzana", 1250))
-    productos.push(new Producto(4, `img/Brownie-min.jpg`,"Brownie", 1500))
+    productos.push(new producto(1, `img/Lemonpie-min.jpg`,"Lemon Pie", 1500))
+    productos.push(new producto(2, `img/Tortaoreo-min.jpg`,"Tarta oreo", 1350))
+    productos.push(new producto(3, `img/Crumbledemanzana-min.jpg`,"Crumble de manzana", 1250))
+    productos.push(new producto(4, `img/Brownie-min.jpg`,"Brownie", 1500))
 }
 
 function ProductosDom() {
