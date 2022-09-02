@@ -104,6 +104,17 @@ agregarProductos()
 ProductosDom()
 agregarAlCarritoDom()
 
+function sa () {
+    Swal.fire({
+        text: 'Bienvenidos a la tienda Online de Brikka!',
+        width: 300,
+        padding: 10,
+        background: '#fefae0',
+        button: '#fefae0',
+        confirmButtonText: 'Aceptar',
+        })
+}
+
 
 
 
