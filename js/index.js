@@ -1,10 +1,10 @@
 class producto {
-    constructor( id, img, nombre, precio) {
+    constructor(id, img, nombre, precio) {
         this.id = id
         this.img = img
         this.nombre = nombre
         this.precio = precio
-        
+
     }
 }
 
@@ -12,7 +12,7 @@ const productos = []
 
 let carrito = JSON.parse(localStorage.getItem("carritoLocal")) || []
 let numeroCarrito = document.querySelector(".numero")
-let totalCarrito= document.querySelector(".total")
+let totalCarrito = document.querySelector(".total")
 
 
 
@@ -28,19 +28,20 @@ function ProductosDom() {
     productos.forEach(el => {
         let div = document.createElement("div")
         div.className = "card"
-        div.innerHTML = `<img class="img" src="${el.img}"/> 
+        div.innerHTML = 
+        `<img class="img" src="${el.img}"/> 
         <p class="card-nombre">${el.nombre}</p>
         <p class="card-price">$${el.precio}</p>
         <button id="btn-agregar${el.id}" class="card-btn">Agregar al carrito</button>`
         container.append(div)
     })
     comprar()
-    }
+}
 
 
 function comprar() {
     productos.forEach((prod) => {
-        document.querySelector(`#btn-agregar${prod.id}`).addEventListener("click", ()=>{
+        document.querySelector(`#btn-agregar${prod.id}`).addEventListener("click", () => {
             agregarAlCarrito(prod.id)
         })
     })
@@ -62,7 +63,8 @@ function agregarAlCarritoDom() {
     carrito.forEach(prod => {
         let tr = document.createElement("tr")
         tr.className = "cart"
-        tr.innerHTML = `<td class= "table-id">${prod.id}</td>
+        tr.innerHTML = 
+        `<td class= "table-id">${prod.id}</td>
         <td><img class="table-img" src="${prod.img}"/></td>
         <td>${prod.nombre}</td>
         <td>$${prod.precio}</td>
@@ -72,13 +74,13 @@ function agregarAlCarritoDom() {
     })
     borrarProducto()
     calcularTotal()
- }
+}
 
 
 function borrarProducto() {
     let eliminarBtn = document.querySelectorAll(".eliminar-btn")
     eliminarBtn.forEach(el => {
-        el.addEventListener("click", (ev)=>{
+        el.addEventListener("click", (ev) => {
             let button = ev.target.parentElement.parentElement
             let eliminarDom = button.querySelector(".table-id")
             eliminar(eliminarDom.innerText)
@@ -89,7 +91,7 @@ function borrarProducto() {
 }
 
 function eliminar(param) {
-    let item = carrito.find(el=> el.id == param)
+    let item = carrito.find(el => el.id == param)
     let index = carrito.indexOf(item)
     carrito.splice(index, 1)
     localStorage.setItem("carritoLocal", JSON.stringify(carrito))
@@ -100,22 +102,34 @@ function calcularTotal() {
     totalCarrito.innerHTML = total
 }
 
-agregarProductos()
-ProductosDom()
-agregarAlCarritoDom()
 
-function sa () {
-    Swal.fire({
-        text: 'Bienvenidos a la tienda Online de Brikka!',
-        width: 300,
-        padding: 10,
-        background: '#fefae0',
-        button: '#fefae0',
-        confirmButtonText: 'Aceptar',
-        })
+function sa() {
+    Swal.fire(`Gracias por su compra!`)
+    totalCarrito.className = "totalLL"
 }
 
 
+
+//FETCH
+
+class Productos {
+    async getProductos() {
+        try {
+            const result = await fetch("productos.json")
+            const data = await result.json()
+            const productos = data.items
+            return productos
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
+}
+
+
+agregarProductos()
+ProductosDom()
+agregarAlCarritoDom()
 
 
 

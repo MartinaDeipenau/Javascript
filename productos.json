@@ -1,0 +1,59 @@
+{
+    "status": "success",
+    "items": [
+        {
+            "id": 1,
+            "title": "Lemon Pie",
+            "price": 1500,
+            "image": "img/Lemonpie-min.jpg"
+        },
+        {
+            "id": 2,
+            "title": "Tarta Oreo",
+            "price": 1350,
+            "image": "img/Tortaoreo-min.jpg"
+        },
+        {
+            "id": 3,
+            "title": "Crumble de manzana",
+            "price": 1250,
+            "image": "img/Crumbledemanzana-min.jpg"
+        },
+        {
+            "id": 4,
+            "title": "Brownie",
+            "price": 1500,
+            "image": "img/Brownie-min.jpg"
+        },
+        {
+            "id": 5,
+            "title": "Tarta Mousse de Chocolate",
+            "price": 1300,
+            "image": "img/Tartamoussech-min.jpg"
+        },
+        {
+            "id": 6,
+            "title": "Torre de alfajores",
+            "price": 550,
+            "image": "img/Torredealfajores-min.jpg"
+        },
+        {
+            "id": 7,
+            "title": "ChocoMerengon",
+            "price": 300,
+            "image": "img/chocomerengon-min.jpg"
+        },
+        {
+            "id": 8,
+            "title": "Alfajores",
+            "price": 200,
+            "image": "img/Alfajores3-min.jpg"
+        },
+        {
+            "id": 9,
+            "title": "Alfajor Sablee",
+            "price": 200,
+            "image": "img/Alfajorsablee-min.jpg"
+        }
+    ]
+}
