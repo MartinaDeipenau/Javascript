@@ -3,57 +3,51 @@
     "items": [
         {
             "id": 1,
+            "image": "img/Lemonpie-min.jpg",
             "title": "Lemon Pie",
-            "price": 1500,
-            "image": "img/Lemonpie-min.jpg"
+            "price": 1500
         },
         {
             "id": 2,
+            "image": "img/Tortaoreo-min.jpg",
             "title": "Tarta Oreo",
-            "price": 1350,
-            "image": "img/Tortaoreo-min.jpg"
+            "price": 1350
         },
         {
             "id": 3,
+            "image": "img/Crumbledemanzana-min.jpg",
             "title": "Crumble de manzana",
-            "price": 1250,
-            "image": "img/Crumbledemanzana-min.jpg"
+            "price": 1250
         },
         {
             "id": 4,
+            "image": "img/Brownie-min.jpg",
             "title": "Brownie",
-            "price": 1500,
-            "image": "img/Brownie-min.jpg"
+            "price": 1500
         },
         {
             "id": 5,
+            "image": "img/Tortamoussech-min.jpg",
             "title": "Tarta Mousse de Chocolate",
-            "price": 1300,
-            "image": "img/Tartamoussech-min.jpg"
+            "price": 1300
         },
         {
             "id": 6,
+            "image": "img/Torredealfajores-min.jpg",
             "title": "Torre de alfajores",
-            "price": 550,
-            "image": "img/Torredealfajores-min.jpg"
+            "price": 550
         },
         {
             "id": 7,
+            "image": "img/chocomerengon-min.jpg",
             "title": "ChocoMerengon",
-            "price": 300,
-            "image": "img/chocomerengon-min.jpg"
+            "price": 300
         },
         {
             "id": 8,
+            "image": "img/Alfajores3-min.jpg",
             "title": "Alfajores",
-            "price": 200,
-            "image": "img/Alfajores3-min.jpg"
-        },
-        {
-            "id": 9,
-            "title": "Alfajor Sablee",
-            "price": 200,
-            "image": "img/Alfajorsablee-min.jpg"
+            "price": 200
         }
     ]
 }

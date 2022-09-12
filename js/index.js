@@ -21,6 +21,11 @@ function agregarProductos() {
     productos.push(new producto(2, `img/Tortaoreo-min.jpg`,"Tarta oreo", 1350))
     productos.push(new producto(3, `img/Crumbledemanzana-min.jpg`,"Crumble de manzana", 1250))
     productos.push(new producto(4, `img/Brownie-min.jpg`,"Brownie", 1500))
+    productos.push(new producto(5,`img/Tortamoussech-min.jpg`,"Tarta mousse de Chocolate",1300))
+    productos.push(new producto(6, `img/Torredealfajores-min.jpg`,"Torre de alfajores",550))
+    productos.push(new producto(7,`img/chocomerengon-min.jpg`,"Chocomerengon",300))
+    productos.push(new producto(8, `img/Alfajores3-min.jpg`,"Alfajores",200))
+
 }
 
 function ProductosDom() {
