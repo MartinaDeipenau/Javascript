@@ -9,7 +9,6 @@ class producto {
 }
 
 const productos = []
-let carritoVacio = []
 let carrito = JSON.parse(localStorage.getItem("carritoLocal")) || []
 let numeroCarrito = document.querySelector(".numero")
 let totalCarrito = document.querySelector(".total")
@@ -86,6 +85,7 @@ function agregarAlCarritoDom() {
 function calcularTotal() {
     let total = carrito.reduce((acc, prod) => acc + prod.precio, 0)
     totalCarrito.innerHTML = total
+
 }
 
 function borrarProducto() {
@@ -120,7 +120,9 @@ function alert_agregar(){
         title: "El producto se añadio al carrito exitosamente",
         color: "black",
         background: "#006d77",
-        confirmButtonColor: "#83c5be"
+        timer: 2000,
+        position: "top",
+        showConfirmButton: false,
     })
 }
 
@@ -129,34 +131,34 @@ function alert_eliminar() {
         icon: "error",
         title: "Producto eliminado del carrito",
         color: "black",
+        timer: 2000,
         background: "#ffddd2",
-        confirmButtonColor: "#006d77"
+        showConfirmButton: false
     })
 }
 function compraFinalizada() {
     Swal.fire({
         title: "¡Gracias por su compra!",
-        color: "black"
+        color: "black",
+        confirmButtonColor: "#006d77",
     })
 }
 
 
-
 //FETCH
 
-class Productos {
-    async ProductosDom() {
-        try {
-            const result = await fetch("js/productos.json")
-            const data = await result.json()
-            const productos = data.items
-            return productos
-        }
-        catch (error) {
-            console.log(error)
-        }
+async function getProductos() {
+    try {
+        const result = await fetch("productos.json")
+        const data = await result.json()
+        const productos = data.items
+        console.log('acá se imprimen los productos en el DOM->', productos)
+    }
+    catch (err) {
+        console.log(err)
     }
 }
+getProductos()
 
 
 agregarProductos()

@@ -1,6 +1,4 @@
-{
-    "status": "success",
-    "items": [
+[
         {
             "id": 1,
             "image": "img/Lemonpie-min.jpg",
@@ -49,5 +47,4 @@
             "title": "Alfajores",
             "price": 200
         }
-    ]
-}
+]
