@@ -9,7 +9,7 @@ class producto {
 }
 
 const productos = []
-
+let carritoVacio = []
 let carrito = JSON.parse(localStorage.getItem("carritoLocal")) || []
 let numeroCarrito = document.querySelector(".numero")
 let totalCarrito = document.querySelector(".total")
@@ -72,8 +72,8 @@ function agregarAlCarritoDom() {
         tr.innerHTML = 
         `<td class= "table-id">${prod.id}</td>
         <td><img class="table-img" src="${prod.img}"/></td>
-        <td>${prod.nombre}</td>
-        <td>$${prod.precio}</td>
+        <td>${prod.nombre} <class="nombre"></td>
+        <td>$${prod.precio} <class="precio"></td>
         <td><button id="btn-eliminar-${prod.id}" class="eliminar-btn">X</button></td>
         `
         cuerpo.append(tr)
@@ -114,11 +114,13 @@ let boton_compra = document.getElementById("boton-comprar")
 
 boton_compra.addEventListener("click", compraFinalizada)
 
+
 function alert_agregar(){
     Swal.fire({
         title: "El producto se añadio al carrito exitosamente",
         color: "black",
-        confirmButtonColor: "#000000"
+        background: "#006d77",
+        confirmButtonColor: "#83c5be"
     })
 }
 
@@ -127,13 +129,14 @@ function alert_eliminar() {
         icon: "error",
         title: "Producto eliminado del carrito",
         color: "black",
-        confirmButtonColor: "#ddbea9"
+        background: "#ffddd2",
+        confirmButtonColor: "#006d77"
     })
 }
 function compraFinalizada() {
     Swal.fire({
-        title: "¡Gracias por su compra!"
-
+        title: "¡Gracias por su compra!",
+        color: "black"
     })
 }
 
