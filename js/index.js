@@ -59,6 +59,7 @@ function agregarAlCarrito(IdParametro) {
     localStorage.setItem("carritoLocal", JSON.stringify(carrito))
     calcularTotal()
     agregarAlCarritoDom()
+    alert_agregar()
 }
 
 
@@ -82,6 +83,11 @@ function agregarAlCarritoDom() {
 }
 
 
+function calcularTotal() {
+    let total = carrito.reduce((acc, prod) => acc + prod.precio, 0)
+    totalCarrito.innerHTML = total
+}
+
 function borrarProducto() {
     let eliminarBtn = document.querySelectorAll(".eliminar-btn")
     eliminarBtn.forEach(el => {
@@ -100,17 +106,35 @@ function eliminar(param) {
     let index = carrito.indexOf(item)
     carrito.splice(index, 1)
     localStorage.setItem("carritoLocal", JSON.stringify(carrito))
-}
-
-function calcularTotal() {
-    let total = carrito.reduce((acc, prod) => acc + prod.precio, 0)
-    totalCarrito.innerHTML = total
+    alert_eliminar()
 }
 
 
-function sa() {
-    Swal.fire(`Gracias por su compra!`)
-    totalCarrito.className = "totalLL"
+let boton_compra = document.getElementById("boton-comprar")
+
+boton_compra.addEventListener("click", compraFinalizada)
+
+function alert_agregar(){
+    Swal.fire({
+        title: "El producto se añadio al carrito exitosamente",
+        color: "black",
+        confirmButtonColor: "#000000"
+    })
+}
+
+function alert_eliminar() {
+    Swal.fire({
+        icon: "error",
+        title: "Producto eliminado del carrito",
+        color: "black",
+        confirmButtonColor: "#ddbea9"
+    })
+}
+function compraFinalizada() {
+    Swal.fire({
+        title: "¡Gracias por su compra!"
+
+    })
 }
 
 
@@ -118,15 +142,15 @@ function sa() {
 //FETCH
 
 class Productos {
-    async getProductos() {
+    async ProductosDom() {
         try {
-            const result = await fetch("productos.json")
+            const result = await fetch("js/productos.json")
             const data = await result.json()
             const productos = data.items
             return productos
         }
-        catch (err) {
-            console.log(err)
+        catch (error) {
+            console.log(error)
         }
     }
 }

@@ -7,47 +7,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brikka Patisserie</title>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="css/estilos.css">  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/estilos.css">
 
 </head>
 
 <body>
-   <header class="header">
-   </header>
-   <main>
 
-    <div id="lista-productos" class="container">
-        <h1 class="encabezado">Brikka</h1>
-        <div class="products"></div>
-    </div>
-    </div>
+    <main>
 
-
-
-    <section class="carrito">
-        <h2 class="carrito-tittle">Carrito</h2>
-        <div class="contador-total">
-            <p>Total Carrito: $ <span class="total">0</span></p>
+        <div id="lista-productos" class="container">
+            <h1 class="encabezado">Brikka</h1>
+            <div class="products"></div>
+        </div>
         </div>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>IMAGEN</th>
-                    <th>NOMBRE</th>
-                    <th>PRECIO</th>
-                </tr>
-            </thead>
-            <tbody class="cuerpo">
 
-            </tbody>
-        </table>
-    </section>
-   </main>
-   <footer class="footer">
-    <p>Copyright & -</p>
-   </footer>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>IMAGEN</th>
+                        <th>NOMBRE</th>
+                        <th>PRECIO</th>
+                    </tr>
+                </thead>
+                
+                <tbody class="cuerpo">
+                    <section class="carrito">
+                        <h2 class="carrito-tittle">Carrito</h2>
+                        <div class="contador-total">
+                            <p>Total Carrito: $ <span class="total">0</span></p>
+                        </div>
+                        <button class="btn btn-success" id="boton-comprar">Comprar</button>
+                      </div>
+                    </div>
+
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+    <footer class="footer">
+        <p>Copyright & -</p>
+    </footer>
 
 
     <script src="js/index.js"></script>
